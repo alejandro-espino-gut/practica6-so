@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 67.2, "left": 62.44, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": 119.6, "left": -131.3, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw2", "top": 119.6, "left": -92.9, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_reset",
+      "top": 35,
+      "left": -144,
+      "attrs": { "color": "red", "label": "RESET" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_pulse",
+      "top": -99.6,
+      "left": -53.8,
+      "attrs": { "color": "red", "label": "Corazón" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_pace",
+      "top": -99.6,
+      "left": 52.2,
+      "attrs": { "color": "blue", "label": "Marcapasos", "flip": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -15.25,
+      "left": 115.2,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -34.45,
+      "left": 115.2,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn_reset:1.l", "esp:14", "green", [ "h-28.8", "v153.6" ] ],
+    [ "btn_reset:2.l", "esp:GND.1", "black", [ "h-19.2", "v153.8" ] ],
+    [ "sw1:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "sw1:2", "esp:32", "green", [ "v28.8", "h86.5", "v-28.8" ] ],
+    [ "sw2:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "sw2:2", "esp:33", "violet", [ "v0" ] ],
+    [ "esp:25", "led_pulse:A", "red", [ "h-47.85", "v-172.8", "h-48" ] ],
+    [ "led_pulse:C", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "h37.2", "v105.6" ] ],
+    [ "esp:26", "led_pace:A", "blue", [ "h-57.45", "v-201.6", "h57.6" ] ],
+    [ "led_pace:C", "r2:1", "black", [ "v0" ] ],
+    [ "r2:2", "esp:GND.2", "black", [ "h56.4", "v124.8" ] ]
+  ],
+  "dependencies": {}
+}
